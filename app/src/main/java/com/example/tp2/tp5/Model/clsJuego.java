@@ -136,10 +136,7 @@ public class clsJuego {
             {
                 Log.d("Colision", "Hubo colision");
             }
-            else
-            {
-                Log.d("Colision", "No hubo colision");
-            }
+
         }
         void PonerUnEnemigo()
         {
