@@ -147,6 +147,7 @@ public class clsJuego {
             AlturaEnemigo= NaveEnemigo.getHeight();
             AnchoEnemigo= NaveEnemigo.getWidth();
             Random GeneradorDeAzar= new Random();
+            int hola= 1;
 
             PosicionInicial.y=PantallaDelDispositivo.height + AlturaEnemigo/2;
             PosicionInicial.x=GeneradorDeAzar.nextInt((int)PantallaDelDispositivo.width - (int)AnchoEnemigo) + AnchoEnemigo/2;
