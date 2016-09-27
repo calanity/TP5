@@ -1,6 +1,8 @@
 package com.example.tp2.tp5.Model;
 
 import android.util.Log;
+import android.view.InputDevice;
+import android.view.MotionEvent;
 
 import org.cocos2d.actions.Scheduler;
 import org.cocos2d.actions.interval.MoveTo;
@@ -89,6 +91,9 @@ public class clsJuego {
     {
 
         public CapaDelFrente() {
+
+            this.setIsTouchEnabled(true);
+
             PonerNaveJugadorPosicionInicial();
             TimerTask TareaPonerEnemigos= new TimerTask() {
                 @Override
@@ -109,6 +114,32 @@ public class clsJuego {
             Timer RelojVerificarImpactos= new Timer();
             RelojVerificarImpactos.schedule(TareaVerificarImpactos, 0, 100);
 
+        }
+        @Override
+        public boolean ccTouchesBegan(MotionEvent event)
+        {
+            Log.d("Toque comienza", "x:" + event.getX()+"-Y: " + event.getY());
+            return true;
+        }
+
+        @Override
+        public boolean ccTouchesMoved(MotionEvent event)
+        {
+            Log.d("Toque mueve", "x:" + event.getX()+"-Y: " + event.getY());
+            return true;
+        }
+
+        @Override
+        public boolean ccTouchesEnded(MotionEvent event)
+        {
+            Log.d("Toque termina", "x:" + event.getX()+"-Y: " + event.getY());
+            MoverNaveJugador(event.getX(),PantallaDelDispositivo.getHeight()- event.getY());
+            return true;
+        }
+
+        void MoverNaveJugador(float DestinoX , float DestinoY )
+        {
+            NaveJugador.setPosition(DestinoX, DestinoY);
         }
 
         private void PonerNaveJugadorPosicionInicial()
@@ -135,6 +166,10 @@ public class clsJuego {
             if(HuboColision)
             {
                 Log.d("Colision", "Hubo colision");
+            }
+            else
+            {
+                Log.d("Colision", "no hubo colision");
             }
 
         }
