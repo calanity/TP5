@@ -139,7 +139,10 @@ public class clsJuego {
 
         void MoverNaveJugador(float DestinoX , float DestinoY )
         {
-            NaveJugador.setPosition(DestinoX, DestinoY);
+            float MovimientoHorizontal, MovimientoVertical;
+            MovimientoHorizontal= DestinoX-PantallaDelDispositivo.getWidth()/2;
+            MovimientoVertical= DestinoY-PantallaDelDispositivo.getHeight()/2;
+            NaveJugador.setPosition(NaveJugador.getPositionX()+MovimientoHorizontal , NaveJugador.getPositionY()+MovimientoVertical);
         }
 
         private void PonerNaveJugadorPosicionInicial()
